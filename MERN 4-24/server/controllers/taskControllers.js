@@ -28,10 +28,11 @@ const removeTask = async(req,res) =>{
 
 const getTask = async(req,res)=>{
     try {
-        
+        const tasks = todoModel.find()
+        res.status(200).json(tasks)
     } catch (error) {
-        
+        // res.status(404).json({ message: "not found"})
     }
 }
 
-module.exports = {addTask,removeTask}
+module.exports = {addTask,removeTask,getTask}
