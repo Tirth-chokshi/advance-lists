@@ -26,10 +26,17 @@ const removeTask = async(req,res) =>{
     }
 }
 
-const getTask = async(req,res)=>{
+/**
+ * Retrieves all tasks from the todoModel and sends them as a JSON response.
+ * 
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the tasks are sent as a JSON response.
+ */
+const getTask = async (req, res) => {
     try {
-        const tasks = todoModel.find()
-        res.status(200).json(tasks)
+        const tasks = await todoModel.find();
+        res.status(200).json(tasks);
     } catch (error) {
         // res.status(404).json({ message: "not found"})
     }

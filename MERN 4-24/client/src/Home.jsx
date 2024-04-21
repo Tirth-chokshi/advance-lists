@@ -9,13 +9,14 @@ export default function Home() {
   useEffect(() => {
     const getTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/task/getTask'); // Replace with your API endpoint
+        // Ensure the URL matches your API endpoint exactly.
+        // If you're using a proxy, you might not need the full URL.
+        const response = await axios.get('http://localhost:3000/api/task/getTask');
         setTodos(response.data);
       } catch (error) {
-        console.error("eroor in task",error);
+        console.error("Error in task fetch:", error);
       }
     };
-
     getTasks();
   }, []); // Empty dependency array: fetch only once on mount
 
@@ -23,7 +24,6 @@ export default function Home() {
     <div className={'home'}>
       <h2>Todo List</h2>
       <Create /> {/* Create component for adding tasks */}
-
       {todos.length === 0 ? (
         <div><h2>No Tasks</h2></div>
       ) : (
