@@ -7,7 +7,7 @@ export default function Create({ onTaskAdded }) {
     const handleAdd = () => {  
       axios.post('http://localhost:3000/api/task/addTask', { title: title })
           .then(result => {
-              console.log(result);
+             location.reload()
               setTitle('') // not working until re-rendaring 
           })
           .catch(err => console.log(err));

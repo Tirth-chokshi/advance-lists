@@ -22,8 +22,7 @@ export default function Home() {
     // Assuming you want to toggle the completed status of the task
     axios.put(`http://localhost:3000/api/task/updateTask/${id}`, { completed: !completed })
       .then(() => {
-        // Fetch tasks again to update the UI
-        getTasks(); // This function needs to be accessible here, consider moving it outside useEffect or calling fetchTasks directly if available
+        location.reload()
       })
       .catch(err => console.log(err));
   };
