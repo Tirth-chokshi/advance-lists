@@ -17,7 +17,7 @@ const addTask = async (req, res) => {
 
 const removeTask = async(req,res) =>{
     try {
-        const {id} = req.body
+        const {id} = req.params
         console.log("id: ",id)
         await todoModel.findByIdAndDelete(id)
         res.status(200).json({ message:"deleted succesfully"})
@@ -25,7 +25,15 @@ const removeTask = async(req,res) =>{
         res.status(500).json({ message:"failed deletion"})
     }
 }
-
+const updateTask = async(req,res) =>{
+    try {
+        const {id} = req.params 
+        await todoModel.findByIdAndUpdate({ _id:id}, {completed:true})
+        res.status(200).json({ message:"task updated"})
+    } catch (error) {
+        res.status(500).json({ message:"failed to update"})
+    }
+}
 /**
  * Retrieves all tasks from the todoModel and sends them as a JSON response.
  * 
@@ -42,4 +50,4 @@ const getTask = async (req, res) => {
     }
 }
 
-module.exports = {addTask,removeTask,getTask}
+module.exports = {addTask,removeTask,getTask,updateTask}
