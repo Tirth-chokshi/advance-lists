@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
 }
+.create_form{
+  margin-bottom: 30px;
+}
 .create_form input{
   width: 300px;
   padding: 10px;
@@ -42,4 +45,7 @@
 
 .task div .icon {
   cursor: pointer;
+}
+.line-thorugh{
+  text-decoration: line-through;
 }

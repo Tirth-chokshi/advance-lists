@@ -28,7 +28,8 @@ const removeTask = async(req,res) =>{
 const updateTask = async(req,res) =>{
     try {
         const {id} = req.params 
-        await todoModel.findByIdAndUpdate({ _id:id}, {completed:true})
+        const { completed }= req.body
+        await todoModel.findByIdAndUpdate(id, { completed    }, { new: true })
         res.status(200).json({ message:"task updated"})
     } catch (error) {
         res.status(500).json({ message:"failed to update"})

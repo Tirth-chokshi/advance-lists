@@ -52,7 +52,7 @@ export default function Home() {
                 <BsFillCheckCircleFill className="icon" />
                 : <BsCircleFill className="icon" />
               }
-              <p>{todo.title}</p>
+              <p className={todo.completed? 'line-thorugh': ''}>{todo.title}</p>
             </div>
             <div onClick={() => handleDelete(todo._id)}>
               <BsTrash className={'icon'} />
